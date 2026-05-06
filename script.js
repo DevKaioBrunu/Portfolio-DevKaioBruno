@@ -192,7 +192,12 @@ function createProjectCard(data) {
 
   // Seed with 3 demo cards
   const demos = [
-    { title: 'App Biblioteca', description: 'Aplicação web full-stack com autenticação, dashboard em tempo real e integração com API externa.', tags: ['React', 'Node.js', 'PostgreSQL'], demoUrl: 'https://www.bibliotecauni.space/', codeUrl: 'https://github.com/app-biblioteca-ads-unifor-grupo-35-N697/biblioteca-emprestimos-cloud.git' },
+    { title: 'App Biblioteca', 
+      description: 'Aplicação web full-stack com autenticação, dashboard em tempo real e integração com API externa.', 
+      image: 'img/projeto-biblioteca-universitaria.jpg',
+      tags: ['React', 'Node.js', 'PostgreSQL'], 
+      demoUrl: 'https://www.bibliotecauni.space/', 
+      codeUrl: 'https://github.com/app-biblioteca-ads-unifor-grupo-35-N697/biblioteca-emprestimos-cloud.git' },
     
     //{ title: 'Projeto Beta',  description: 'E-commerce responsivo com carrinho de compras, checkout integrado e painel administrativo.', tags: ['Next.js', 'Tailwind', 'Stripe'], demoUrl: '#', codeUrl: 'https://github.com' },
 
