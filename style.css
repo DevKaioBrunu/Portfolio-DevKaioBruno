@@ -98,6 +98,127 @@ section { padding: 96px 24px; }
   box-shadow: 0 0 20px var(--color-primary-glow);
 }
 
+/* ─── DIPLOMA ──────────────────────────────────────────── */
+#diploma { background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface-2) 100%); }
+
+.diploma-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  box-shadow: var(--shadow-glow);
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .diploma-card {
+    grid-template-columns: 1fr;
+    padding: 24px;
+    gap: 24px;
+  }
+}
+
+.diploma-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.diploma-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 0 20px rgba(29, 78, 216, 0.15);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.diploma-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(29, 78, 216, 0.25);
+}
+
+/* Download link styling */
+.diploma-download-link {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.diploma-download-link:hover .diploma-image {
+  transform: scale(1.05);
+}
+
+.diploma-download-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: rgba(29, 78, 216, 0.6);
+  border-radius: var(--radius-md);
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.diploma-download-link:hover .diploma-download-badge {
+  opacity: 1;
+}
+
+.diploma-download-badge svg {
+  color: white;
+  width: 18px;
+  height: 18px;
+}
+
+.diploma-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.diploma-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.diploma-institution {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.diploma-course {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.diploma-year {
+  font-size: 0.9rem;
+  color: var(--color-text-faint);
+  margin-top: 8px;
+}
+
 .btn-outline {
   display: inline-flex;
   align-items: center;
