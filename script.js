@@ -122,9 +122,9 @@ qs('#contactBtn').addEventListener('click', e => {
    ────────────────────────────────────────────── */
 (function() {
   const skills = [
-    'JavaScript', 'React', 'Next.js', 'Node.js',
+    'JavaScript', 'React', 'Node.js',
     'HTML / CSS', 'Tailwind CSS', 'Git & GitHub',
-    'REST APIs', 'Docker', 'PostgreSQL', 'MongoDB', 'Figma'
+    'REST APIs', 'PostgreSQL', 'MongoDB', 'Figma'
   ];
   const grid = qs('#skillsGrid');
 
