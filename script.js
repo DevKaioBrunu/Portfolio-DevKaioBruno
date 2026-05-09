@@ -123,8 +123,8 @@ qs('#contactBtn').addEventListener('click', e => {
 (function() {
   const skills = [
     'JavaScript', 'React', 'Node.js',
-    'HTML / CSS', 'Tailwind CSS', 'Git & GitHub',
-    'REST APIs', 'PostgreSQL', 'MongoDB', 'Figma'
+    'HTML / CSS', 'Tailwind CSS', 'Vite', 'Git & GitHub',
+    'REST APIs', 'PostgreSQL', 'MongoDB', 'Figma', 'Java', 'Spring Boot',
   ];
   const grid = qs('#skillsGrid');
 
@@ -192,14 +192,21 @@ function createProjectCard(data) {
 
   // Seed with 3 demo cards
   const demos = [
-    { title: 'App Biblioteca', 
+     { title: 'FlexFuel',  
+      description: 'FlexFuel é um app frontend para comparar gasolina e etanol com base na autonomia real do veículo cadastrado.', 
+      image: 'img/projeto-flex-fuel.png',
+      tags: ['Next.js', 'Tailwind',], 
+      demoUrl: 'https://flex-fuel-six.vercel.app/', 
+      codeUrl: 'https://github.com/DevKaioBrunu/FlexFuel.git' },
+
+    { title: 'Biblioteca Universitária', 
       description: 'Aplicação web full-stack com autenticação, dashboard em tempo real e integração com API externa.', 
       image: 'img/projeto-biblioteca-universitaria.jpg',
       tags: ['React', 'Node.js', 'PostgreSQL'], 
       demoUrl: 'https://www.bibliotecauni.space/', 
       codeUrl: 'https://github.com/app-biblioteca-ads-unifor-grupo-35-N697/biblioteca-emprestimos-cloud.git' },
     
-    //{ title: 'Projeto Beta',  description: 'E-commerce responsivo com carrinho de compras, checkout integrado e painel administrativo.', tags: ['Next.js', 'Tailwind', 'Stripe'], demoUrl: '#', codeUrl: 'https://github.com' },
+   
 
     //{ title: 'Projeto Gamma', description: 'CLI tool para automação de deploys com Docker e integração contínua via GitHub Actions.', tags: ['Python', 'Docker', 'CI/CD'], demoUrl: '#', codeUrl: 'https://github.com' }
   ];
