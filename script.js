@@ -124,7 +124,7 @@ qs('#contactBtn').addEventListener('click', e => {
   const skills = [
     'JavaScript', 'React', 'Node.js',
     'HTML / CSS', 'Tailwind CSS', 'Vite', 'Git & GitHub',
-    'REST APIs', 'PostgreSQL', 'MongoDB', 'Figma', 'Java', 'Spring Boot',
+    'REST APIs', 'Java', 'Spring Boot',
   ];
   const grid = qs('#skillsGrid');
 
