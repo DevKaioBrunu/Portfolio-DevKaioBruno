@@ -62,7 +62,7 @@ qs('#footerYear').textContent = new Date().getFullYear();
    CURSOR TRACKING
    ────────────────────────────────────────────── */
 (function() {
-  const cards = qsa('.bio-card, .project-card, .diploma-card, .contact-card');
+  const cards = qsa('.project-card, .diploma-card');
   
   cards.forEach(card => {
     card.addEventListener('mousemove', e => {
@@ -455,4 +455,38 @@ function createProjectCard(data) {
     }
   `;
   document.head.appendChild(style);
+})();
+
+/* ──────────────────────────────────────────────
+   CONTACT FORM HANDLER
+   ────────────────────────────────────────────── */
+(function() {
+  const contactForm = qs('#contactForm');
+  if (!contactForm) return;
+
+  // Replace with actual email
+  contactForm.action = 'https://formsubmit.co/k410bruno@gmail.com';
+  
+  // Add honeypot
+  const honeypot = document.createElement('input');
+  honeypot.type = 'hidden';
+  honeypot.name = '_captcha';
+  honeypot.value = 'false';
+  contactForm.appendChild(honeypot);
+
+  // Add success page redirect
+  const successInput = document.createElement('input');
+  successInput.type = 'hidden';
+  successInput.name = '_next';
+  successInput.value = window.location.href;
+  contactForm.appendChild(successInput);
+
+  // Handle form submission
+  contactForm.addEventListener('submit', function(e) {
+    const submitBtn = qs('#contactBtn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+    submitBtn.style.opacity = '0.6';
+    submitBtn.style.cursor = 'not-allowed';
+  });
 })();
