@@ -175,40 +175,64 @@
   <div class="section-inner">
     <h2 class="section-title reveal" style="text-align:center">Vamos Conversar?</h2>
     <div class="contact-card reveal" style="transition-delay:0.1s">
-      <p class="contact-cta" id="contactCta">
+      <p class="contact-cta">
         Aberto a novas oportunidades e projetos incríveis
       </p>
-      <p class="contact-subtitle" id="contactSub">
-        Se você tem um projeto interessante ou uma vaga alinhada com meu perfil,
-        entre em contato. Responderei o mais breve possível!
+      <p class="contact-subtitle">
+        Envie uma mensagem com suas informações. Responderei o mais breve possível!
       </p>
 
-      <div class="contact-email-wrap">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2" stroke-linecap="round"
-             stroke-linejoin="round" aria-hidden="true">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2
-                   2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-          <polyline points="22,6 12,13 2,6"/>
-        </svg>
-        <span class="contact-email" id="contactEmail" role="text" aria-label="Email de contato">
-          seuemail@exemplo.com
-        </span>
-      </div>
+      <form class="contact-form" id="contactForm">
+        <div class="form-group">
+          <label for="contactName">Nome</label>
+          <input 
+            type="text" 
+            id="contactName" 
+            name="nome" 
+            placeholder="Seu nome completo" 
+            required 
+            aria-label="Seu nome"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="contactFormEmail">E-mail</label>
+          <input 
+            type="email" 
+            id="contactFormEmail" 
+            name="email" 
+            placeholder="seu.email@exemplo.com" 
+            required 
+            aria-label="Seu email"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="contactMessage">Mensagem</label>
+          <textarea 
+            id="contactMessage" 
+            name="mensagem" 
+            placeholder="Descreva seu projeto, dúvida ou proposta..." 
+            rows="5" 
+            required 
+            aria-label="Sua mensagem"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary" id="contactBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" aria-hidden="true">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+          Enviar Mensagem
+        </button>
+      </form>
 
       <div class="contact-social" id="contactSocial">
         <!-- Filled from social links via JS -->
       </div>
-
-      <a href="#" class="btn-primary" id="contactBtn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2" stroke-linecap="round"
-             stroke-linejoin="round" aria-hidden="true">
-          <line x1="22" y1="2" x2="11" y2="13"/>
-          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-        </svg>
-        Enviar Mensagem
-      </a>
     </div>
   </div>
 </section>
