@@ -43,6 +43,81 @@ qs('#footerYear').textContent = new Date().getFullYear();
 })();
 
 /* ──────────────────────────────────────────────
+   PARALLAX EFFECT
+   ────────────────────────────────────────────── */
+(function() {
+  const heroSection = qs('#sobre');
+  if (!heroSection) return;
+  
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    if (scrollY < window.innerHeight) {
+      const blobs = heroSection.querySelectorAll('::before, ::after');
+      heroSection.style.backgroundPosition = `0 ${scrollY * 0.5}px`;
+    }
+  }, { passive: true });
+})();
+
+/* ──────────────────────────────────────────────
+   CURSOR TRACKING
+   ────────────────────────────────────────────── */
+(function() {
+  const cards = qsa('.bio-card, .project-card, .diploma-card, .contact-card');
+  
+  cards.forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = (y - centerY) / 10;
+      const rotateY = (centerX - x) / 10;
+      
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+})();
+
+/* ──────────────────────────────────────────────
+   SMOOTH SCROLL WITH EASING
+   ────────────────────────────────────────────── */
+(function() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+      
+      const target = document.querySelector(href);
+      if (!target) return;
+      
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+})();
+
+/* ──────────────────────────────────────────────
+   GLOW PULSE ON HOVER
+   ────────────────────────────────────────────── */
+(function() {
+  const primaryButtons = qsa('.btn-primary');
+  const badges = qsa('.skill-badge');
+  
+  [...primaryButtons, ...badges].forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      el.style.animation = 'pulse-glow 0.6s ease-in-out';
+    });
+  });
+})();
+
+/* ──────────────────────────────────────────────
    PARTICLES (lightweight canvas)
    ────────────────────────────────────────────── */
 (function() {
@@ -281,4 +356,103 @@ function createProjectCard(data) {
 
   // Make updateDots available globally
   window.updateDots = updateDots;
+})();
+
+/* ──────────────────────────────────────────────
+   ELEMENT STAGGER ANIMATION
+   ────────────────────────────────────────────── */
+(function() {
+  const bioName = qs('.bio-name');
+  const bioRole = qs('.bio-role');
+  const bioDesc = qs('.bio-description');
+  
+  if (bioName && bioRole && bioDesc) {
+    setTimeout(() => {
+      bioName.style.animation = 'slideInLeft 0.8s ease';
+      bioRole.style.animation = 'fadeInUp 0.8s ease 0.1s backwards';
+      bioDesc.style.animation = 'fadeInUp 0.8s ease 0.2s backwards';
+    }, 100);
+  }
+})();
+
+/* ──────────────────────────────────────────────
+   ACTIVE LINK HIGHLIGHT IN NAVBAR
+   ────────────────────────────────────────────── */
+(function() {
+  const navLinks = qsa('.nav-links a');
+  
+  window.addEventListener('scroll', () => {
+    let current = '';
+    const sections = qsa('section[id]');
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (pageYOffset >= sectionTop - 200) {
+        current = section.getAttribute('id');
+      }
+    });
+    
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+      }
+    });
+  }, { passive: true });
+})();
+
+/* ──────────────────────────────────────────────
+   PARTICLE GLOW ON MOUSE MOVE
+   ────────────────────────────────────────────── */
+(function() {
+  const canvas = qs('#particles-canvas');
+  if (!canvas) return;
+  
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  }, { passive: true });
+})();
+
+/* ──────────────────────────────────────────────
+   SCROLL PROGRESS BAR
+   ────────────────────────────────────────────── */
+(function() {
+  const progressBar = document.createElement('div');
+  progressBar.style.cssText = `
+    position: fixed;
+    top: 64px;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #1d4ed8, #2563eb);
+    z-index: 99;
+    transition: width 100ms ease;
+    box-shadow: 0 0 10px rgba(29, 78, 216, 0.6);
+  `;
+  document.body.appendChild(progressBar);
+  
+  window.addEventListener('scroll', () => {
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled = (window.scrollY / docHeight) * 100;
+    progressBar.style.width = scrolled + '%';
+  }, { passive: true });
+})();
+
+/* ──────────────────────────────────────────────
+   NAVBAR ACTIVE LINK STYLE
+   ────────────────────────────────────────────── */
+(function() {
+  const style = document.createElement('style');
+  style.textContent = `
+    .nav-links a.active {
+      color: var(--color-text) !important;
+      background: rgba(29, 78, 216, 0.15) !important;
+      border-color: rgba(29, 78, 216, 0.5) !important;
+    }
+  `;
+  document.head.appendChild(style);
 })();
