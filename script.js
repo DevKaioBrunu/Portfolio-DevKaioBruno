@@ -524,3 +524,136 @@ function createProjectCard(data) {
   // Make updateDots available globally
   window.updateDots = updateDots;
 })();
+
+/* ──────────────────────────────────────────────
+   ELEMENT STAGGER ANIMATION
+   ────────────────────────────────────────────── */
+(function() {
+  const bioName = qs('.bio-name');
+  const bioRole = qs('.bio-role');
+  const bioDesc = qs('.bio-description');
+  
+  if (bioName && bioRole && bioDesc) {
+    setTimeout(() => {
+      bioName.style.animation = 'slideInLeft 0.8s ease';
+      bioRole.style.animation = 'fadeInUp 0.8s ease 0.1s backwards';
+      bioDesc.style.animation = 'fadeInUp 0.8s ease 0.2s backwards';
+    }, 100);
+  }
+})();
+
+/* ──────────────────────────────────────────────
+   ACTIVE LINK HIGHLIGHT IN NAVBAR
+   ────────────────────────────────────────────── */
+(function() {
+  const navLinks = qsa('.nav-links a');
+  
+  window.addEventListener('scroll', () => {
+    let current = '';
+    const sections = qsa('section[id]');
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (pageYOffset >= sectionTop - 200) {
+        current = section.getAttribute('id');
+      }
+    });
+    
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+      }
+    });
+  }, { passive: true });
+})();
+
+/* ──────────────────────────────────────────────
+   PARTICLE GLOW ON MOUSE MOVE
+   ────────────────────────────────────────────── */
+(function() {
+  const canvas = qs('#particles-canvas');
+  if (!canvas) return;
+  
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  }, { passive: true });
+})();
+
+/* ──────────────────────────────────────────────
+   SCROLL PROGRESS BAR
+   ────────────────────────────────────────────── */
+(function() {
+  const progressBar = document.createElement('div');
+  progressBar.style.cssText = `
+    position: fixed;
+    top: 64px;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #1d4ed8, #2563eb);
+    z-index: 99;
+    transition: width 100ms ease;
+    box-shadow: 0 0 10px rgba(29, 78, 216, 0.6);
+  `;
+  document.body.appendChild(progressBar);
+  
+  window.addEventListener('scroll', () => {
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled = (window.scrollY / docHeight) * 100;
+    progressBar.style.width = scrolled + '%';
+  }, { passive: true });
+})();
+
+/* ──────────────────────────────────────────────
+   NAVBAR ACTIVE LINK STYLE
+   ────────────────────────────────────────────── */
+(function() {
+  const style = document.createElement('style');
+  style.textContent = `
+    .nav-links a.active {
+      color: var(--color-text) !important;
+      background: rgba(29, 78, 216, 0.15) !important;
+      border-color: rgba(29, 78, 216, 0.5) !important;
+    }
+  `;
+  document.head.appendChild(style);
+})();
+
+/* ──────────────────────────────────────────────
+   CONTACT FORM HANDLER
+   ────────────────────────────────────────────── */
+(function() {
+  const contactForm = qs('#contactForm');
+  if (!contactForm) return;
+
+  // Replace with actual email
+  contactForm.action = 'https://formsubmit.co/k410bruno@gmail.com';
+  
+  // Add honeypot
+  const honeypot = document.createElement('input');
+  honeypot.type = 'hidden';
+  honeypot.name = '_captcha';
+  honeypot.value = 'false';
+  contactForm.appendChild(honeypot);
+
+  // Add success page redirect
+  const successInput = document.createElement('input');
+  successInput.type = 'hidden';
+  successInput.name = '_next';
+  successInput.value = window.location.href;
+  contactForm.appendChild(successInput);
+
+  // Handle form submission
+  contactForm.addEventListener('submit', function(e) {
+    const submitBtn = qs('#contactBtn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+    submitBtn.style.opacity = '0.6';
+    submitBtn.style.cursor = 'not-allowed';
+  });
+})();
