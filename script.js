@@ -180,17 +180,27 @@ qs('#footerYear').textContent = new Date().getFullYear();
 
 /*SCROLL PROGRESS BAR*/
 (function() {
-  // Create progress bar element
-  const progressBar = document.createElement('div');
-  progressBar.className = 'scroll-progress-bar';
-  document.body.insertBefore(progressBar, document.body.firstChild);
+  const navbar = qs('#navbar');
+  if (!navbar) return;
 
-  window.addEventListener('scroll', () => {
+  const progressBar = document.createElement('div');
+  progressBar.className = 'nav-progress-bar';
+  navbar.appendChild(progressBar);
+
+  function updateProgress() {
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    const progress = docHeight > 0 ? scrollTop / docHeight : 0;
+    const scrollPercent = Math.min(Math.max(progress * 100, 0), 100);
+    const hue = 210 - (progress * 45);
+
     progressBar.style.width = scrollPercent + '%';
-  }, { passive: true });
+    navbar.style.setProperty('--nav-progress-hue', hue.toFixed(2));
+  }
+
+  updateProgress();
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress, { passive: true });
 })();
 
 /*NAVBAR SCROLL DETECTION*/
@@ -210,7 +220,7 @@ qs('#footerYear').textContent = new Date().getFullYear();
   const bioCard = qs('.bio-card');
   const canvas = qs('#particles-canvas');
 
-  if (!bioCard || !canvas || prefersReducedMotion) return;
+  if (!canvas || prefersReducedMotion) return;
 
   let rafId = null;
 
@@ -218,9 +228,9 @@ qs('#footerYear').textContent = new Date().getFullYear();
     const scrollY = window.scrollY;
     const parallaxIntensity = 0.5; // Adjust for more/less parallax
 
-    // Bio card slides up slower (parallax effect)
-    const offset = scrollY * parallaxIntensity * -0.08;
-    bioCard.style.transform = `translateY(${offset}px)`;
+    if (bioCard) {
+      bioCard.style.transform = 'translateY(0px)';
+    }
 
     // Canvas particles also move slightly
     canvas.style.transform = `translateY(${scrollY * parallaxIntensity * -0.05}px)`;
@@ -235,9 +245,9 @@ qs('#footerYear').textContent = new Date().getFullYear();
   updateParallax();
 })();
 
-/*FLOATING CARDS (DIPLOMA & CONTACT)*/
+/*FLOATING CARD (DIPLOMA)*/
 (function() {
-  const floatingCards = qsa('.diploma-card, .contact-card');
+  const floatingCards = qsa('.diploma-card');
   if (prefersReducedMotion) return;
 
   floatingCards.forEach(card => {
@@ -326,16 +336,6 @@ function animateCounter(element, target, duration = 2000) {
 
   counters.forEach(counter => io.observe(counter));
 })();
-
-/*CONTACT SECTION SYNC*/
-/*Contact Button*/
-qs('#contactBtn').addEventListener('click', e => {
-  e.preventDefault();
-  const emailLink = qs('#linkEmail');
-  if (emailLink && emailLink.href) {
-    window.location.href = emailLink.href;
-  }
-});
 
 (function() {
   const contactEmail = qs('#contactEmail');
@@ -547,26 +547,28 @@ function createProjectCard(data) {
    ────────────────────────────────────────────── */
 (function() {
   const navLinks = qsa('.nav-links a');
-  
-  window.addEventListener('scroll', () => {
+
+  function updateActiveLink() {
     let current = '';
     const sections = qsa('section[id]');
-    
+
     sections.forEach(section => {
       const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-      if (pageYOffset >= sectionTop - 200) {
+      if (window.scrollY >= sectionTop - 220) {
         current = section.getAttribute('id');
       }
     });
-    
+
     navLinks.forEach(link => {
       link.classList.remove('active');
       if (link.getAttribute('href') === `#${current}`) {
         link.classList.add('active');
       }
     });
-  }, { passive: true });
+  }
+
+  updateActiveLink();
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
 })();
 
 /* ──────────────────────────────────────────────
@@ -583,45 +585,6 @@ function createProjectCard(data) {
     mouseX = e.clientX;
     mouseY = e.clientY;
   }, { passive: true });
-})();
-
-/* ──────────────────────────────────────────────
-   SCROLL PROGRESS BAR
-   ────────────────────────────────────────────── */
-(function() {
-  const progressBar = document.createElement('div');
-  progressBar.style.cssText = `
-    position: fixed;
-    top: 64px;
-    left: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #1d4ed8, #2563eb);
-    z-index: 99;
-    transition: width 100ms ease;
-    box-shadow: 0 0 10px rgba(29, 78, 216, 0.6);
-  `;
-  document.body.appendChild(progressBar);
-  
-  window.addEventListener('scroll', () => {
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrolled = (window.scrollY / docHeight) * 100;
-    progressBar.style.width = scrolled + '%';
-  }, { passive: true });
-})();
-
-/* ──────────────────────────────────────────────
-   NAVBAR ACTIVE LINK STYLE
-   ────────────────────────────────────────────── */
-(function() {
-  const style = document.createElement('style');
-  style.textContent = `
-    .nav-links a.active {
-      color: var(--color-text) !important;
-      background: rgba(29, 78, 216, 0.15) !important;
-      border-color: rgba(29, 78, 216, 0.5) !important;
-    }
-  `;
-  document.head.appendChild(style);
 })();
 
 /* ──────────────────────────────────────────────
