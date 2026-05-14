@@ -3,23 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfólio — Dev</title>
+  <meta name="description" content="Portfólio de Kaio Bruno, desenvolvedor front-end e gestor de TI focado em interfaces modernas, aplicações web e soluções digitais com boa experiência de uso." />
+  <meta name="theme-color" content="#070b12" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Kaio Bruno | Desenvolvedor Front-End" />
+  <meta property="og:description" content="Projetos, habilidades e formação de Kaio Bruno em front-end, gestão de TI e desenvolvimento de soluções digitais." />
+  <meta property="og:image" content="img/Fto profissional.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Kaio Bruno | Desenvolvedor Front-End</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+<a class="skip-link" href="#sobre">Pular para o conteúdo</a>
 
 <!-- ═══════════════════════════ NAVBAR ═══════════════════════════ -->
 <nav id="navbar" role="navigation" aria-label="Navegação principal">
   <a href="#sobre" class="nav-logo" aria-label="Ir para início">
-    <!-- Minimal letter-mark logo -->
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-      <rect width="32" height="32" rx="8" fill="#1d4ed8"/>
-      <text x="16" y="22" text-anchor="middle" font-family="'Space Grotesk',sans-serif"
-            font-weight="700" font-size="14" fill="white">KB</text>
-    </svg>
+    <img src="img/logo-icon.png" alt="" class="brand-logo" width="32" height="32" />
     DevKaio
   </a>
 
@@ -37,23 +40,29 @@
 </nav>
 
 <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+<main id="conteudo">
 <section id="sobre" aria-label="Sobre mim">
+  <canvas id="hero-3d" aria-hidden="true"></canvas>
   <canvas id="particles-canvas" aria-hidden="true"></canvas>
 
   <div class="bio-card reveal" id="bioCard" style="transition-delay:0.1s">
     <!-- Avatar -->
     <div class="bio-avatar">
-      <img src="img/Fto profissional.png" alt="Avatar" class="avatar-image" />
+      <img src="img/Fto profissional.png" alt="Foto profissional de Kaio Bruno" class="avatar-image" loading="eager" decoding="async" />
+      <span class="availability-badge">Disponível</span>
     </div>
 
     <!-- Bio content -->
     <div class="bio-content">
-      <h1 class="bio-name" id="bioName">Kaio Bruno <p class="bio-role">CRA/CE Nº 6-1168</p></h1>
-      <p class="bio-role" id="bioRole">Desenvolvedor Front-End · Gestor de T.I</p>
+      <p class="bio-eyebrow">Desenvolvedor Front-end e Gestor de TI</p>
+      <h1 class="bio-name" id="bioName">Kaio Bruno</h1>
+      <p class="bio-registration">CRA/CE Nº 6-1168</p>
       <p class="bio-description" id="bioDesc">
-        Conheci o mundo da tecnologia aos 19 anos, quando comecei a explorar programação e design. Desde então, minha paixão por criar soluções inovadoras só cresceu. Com experiência em desenvolvimento Front-End e Gestão de T.I, estou sempre buscando novos desafios para expandir meus conhecimentos e contribuir com projetos incríveis.
+        Desenvolvedor Front-End especializado na criação de interfaces modernas, responsivas e focadas na melhor experiência do usuário. Combino design, desenvolvimento e visão estratégica para construir aplicações performáticas, intuitivas e alinhadas às necessidades reais dos usuários.
       </p>
-
+      <p class="bio-description bio-description-secondary">
+        Minha trajetória na tecnologia começou aos 19 anos, movida pela curiosidade e pela paixão por inovação. Desde então, venho evoluindo constantemente, explorando novas tecnologias e contribuindo para projetos que unem funcionalidade, estética e eficiência.
+      </p>
 
       <div class="bio-links">
         <!-- GitHub -->
@@ -125,7 +134,7 @@
   <div class="section-inner">
     <h2 class="section-title reveal">Meus Projetos</h2>
     <p class="section-subtitle reveal" style="transition-delay:0.05s">
-      Alguns dos projetos que desenvolvemos recentemente
+      Produtos reais com decisões de interface, arquitetura e entrega
     </p>
 
     <div class="projects-track reveal" id="projectsTrack" style="transition-delay:0.1s"
@@ -149,7 +158,7 @@
     <div class="diploma-card reveal" style="transition-delay:0.1s">
       <div class="diploma-image-wrapper">
         <a href="Diploma/Diploma Estacio.pdf" download class="diploma-download-link" aria-label="Baixar diploma em PDF">
-          <img src="img/diploma.jpg" alt="Diploma de Graduação - Estácio de Sá" class="diploma-image" />
+          <img src="img/diploma.jpg" alt="Diploma de Graduação - Estácio de Sá" class="diploma-image" loading="lazy" decoding="async" />
           <div class="diploma-download-badge">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -182,69 +191,42 @@
         Envie uma mensagem com suas informações. Responderei o mais breve possível!
       </p>
 
-      <form class="contact-form" id="contactForm">
-        <div class="form-group">
-          <label for="contactName">Nome</label>
-          <input 
-            type="text" 
-            id="contactName" 
-            name="nome" 
-            placeholder="Seu nome completo" 
-            required 
-            aria-label="Seu nome"
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="contactFormEmail">E-mail</label>
-          <input 
-            type="email" 
-            id="contactFormEmail" 
-            name="email" 
-            placeholder="seu.email@exemplo.com" 
-            required 
-            aria-label="Seu email"
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="contactMessage">Mensagem</label>
-          <textarea 
-            id="contactMessage" 
-            name="mensagem" 
-            placeholder="Descreva seu projeto, dúvida ou proposta..." 
-            rows="5" 
-            required 
-            aria-label="Sua mensagem"
-          ></textarea>
-        </div>
-
-        <button type="submit" class="btn-primary" id="contactBtn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round"
-               stroke-linejoin="round" aria-hidden="true">
-            <line x1="22" y1="2" x2="11" y2="13"/>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-          </svg>
-          Enviar Mensagem
-        </button>
-      </form>
+      <div class="contact-email-wrap">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2
+                   2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        <span class="contact-email" id="contactEmail" role="text" aria-label="Email de contato">
+          k410bruno@gmail.com
+        </span>
+      </div>
 
       <div class="contact-social" id="contactSocial">
         <!-- Filled from social links via JS -->
       </div>
+
+      <a href="mailto:k410bruno@gmail.com" class="btn-primary" id="contactBtn" aria-label="Enviar email para Kaio Bruno">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true">
+          <line x1="22" y1="2" x2="11" y2="13"/>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+        Enviar Mensagem
+      </a>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+</main>
+
 <footer role="contentinfo">
   <div class="footer-logo">
-    <svg width="20" height="20" viewBox="0 0 32 32" fill="none" style="display:inline;vertical-align:middle;margin-right:6px" aria-hidden="true">
-      <rect width="32" height="32" rx="8" fill="#1d4ed8"/>
-      <text x="16" y="22" text-anchor="middle" font-family="'Space Grotesk',sans-serif"
-            font-weight="700" font-size="14" fill="white">KB</text>
-    </svg>
+    <img src="img/logo-icon.png" alt="" class="footer-brand-logo" width="22" height="22" />
     DevKaio
   </div>
   <p>© <span id="footerYear"></span> — Feito a base de muito café</p>
