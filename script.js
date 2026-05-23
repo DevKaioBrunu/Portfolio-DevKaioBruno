@@ -432,8 +432,8 @@ function createProjectCard(data) {
       description: 'Aplicação para comparar gasolina e etanol com base na autonomia real do veículo cadastrado, priorizando clareza na decisão de abastecimento.',
       outcome: 'fluxo direto, interface responsiva e cálculo prático para uso rápido no posto.',
       image: 'img/projeto-flex-fuel.png',
-      tags: ['Next.js', 'Tailwind', 'UX'],
-      demoUrl: 'https://flex-fuel-six.vercel.app/',
+      tags: ['JavaScript', 'HTML', 'CSS', 'UX/UI'],
+      demoUrl: 'https://flex-fuel-eco.vercel.app/',
       codeUrl: 'https://github.com/DevKaioBrunu/FlexFuel.git'
     },
 
