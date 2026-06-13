@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 /* ──────────────────────────────────────────────
    UTILITIES
@@ -267,6 +267,13 @@ function createProjectCard(data) {
 
   // Seed with 3 demo cards
   const demos = [
+         { title: 'Git Profile Search',  
+      description: 'Git Profile Search é uma aplicação web que permite aos usuários buscar perfis do GitHub e visualizar informações detalhadas sobre os usuários e seus repositórios.', 
+      image: 'img/projeto-gitprofile.png',
+      tags: ['TypeScript','React', 'Vite',], 
+      demoUrl: 'https://gitprofilesearch.vercel.app/', 
+      codeUrl: 'https://github.com/F113-Transformacao-digital-Git-profile/git_profile_search.git' },
+
      { title: 'FlexFuel',  
       description: 'FlexFuel é um app frontend para comparar gasolina e etanol com base na autonomia real do veículo cadastrado.', 
       image: 'img/projeto-flex-fuel.png',
