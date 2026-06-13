@@ -427,15 +427,19 @@ function createProjectCard(data) {
 
   // Seed with portfolio projects
   const demos = [
-    {
-      title: 'FlexFuel',
-      description: 'Aplicação para comparar gasolina e etanol com base na autonomia real do veículo cadastrado, priorizando clareza na decisão de abastecimento.',
-      outcome: 'fluxo direto, interface responsiva e cálculo prático para uso rápido no posto.',
+      { title: 'Git Profile Search',  
+      description: 'Git Profile Search é uma aplicação web que permite aos usuários buscar perfis do GitHub e visualizar informações detalhadas sobre os usuários e seus repositórios.', 
+      image: 'img/projeto-gitprofile.png',
+      tags: ['TypeScript','React', 'Vite',], 
+      demoUrl: 'https://gitprofilesearch.vercel.app/', 
+      codeUrl: 'https://github.com/F113-Transformacao-digital-Git-profile/git_profile_search.git' },
+
+     { title: 'FlexFuel',  
+      description: 'FlexFuel é um app frontend para comparar gasolina e etanol com base na autonomia real do veículo cadastrado.', 
       image: 'img/projeto-flex-fuel.png',
       tags: ['JavaScript', 'HTML', 'CSS', 'UX/UI'],
       demoUrl: 'https://flex-fuel-eco.vercel.app/',
-      codeUrl: 'https://github.com/DevKaioBrunu/FlexFuel.git'
-    },
+      codeUrl: 'https://github.com/DevKaioBrunu/FlexFuel.git'},
 
     {
       title: 'Biblioteca Universitária',
