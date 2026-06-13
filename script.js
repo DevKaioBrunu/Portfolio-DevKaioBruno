@@ -436,7 +436,7 @@ function createProjectCard(data) {
 
      { title: 'FlexFuel',  
       description: 'FlexFuel é um app frontend para comparar gasolina e etanol com base na autonomia real do veículo cadastrado.', 
-      image: 'img/projeto-flex-fuel.png',
+      image: 'img/projeto-flex-fuel-branco.png',
       tags: ['JavaScript', 'HTML', 'CSS', 'UX/UI'],
       demoUrl: 'https://flex-fuel-eco.vercel.app/',
       codeUrl: 'https://github.com/DevKaioBrunu/FlexFuel.git'},
